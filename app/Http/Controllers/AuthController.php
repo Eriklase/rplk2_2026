@@ -24,6 +24,9 @@ class AuthController extends Controller
     }
     public function logout()
     {
-
+        if(Auth::guard('user')->check()){
+            Auth::guard('user')->logout();
+        }
+        return redirect(route('auth.index'));
     }
 }

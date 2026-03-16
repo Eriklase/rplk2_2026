@@ -43,7 +43,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="{{route('dashboard.index')}}">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
         </li>
@@ -58,18 +58,15 @@
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-               aria-expanded="true" aria-controls="collapseTwo">
-                <i class="fas fa-fw fa-cog"></i>
-                <span>Components</span>
-            </a>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Custom Components:</h6>
-                    <a class="collapse-item" href="buttons.html">Buttons</a>
-                    <a class="collapse-item" href="cards.html">Cards</a>
-                </div>
-            </div>
+            <a class="nav-link" href="{{route('kategori.index')}}">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>Kategori</span></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="{{route('berita.index')}}">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>Berita</span></a>
         </li>
 
         <!-- Nav Item - Utilities Collapse Menu -->
@@ -410,7 +407,7 @@
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="login.html">Logout</a>
+                <a class="btn btn-primary" href="{{route('auth.logout')}}">Logout</a>
             </div>
         </div>
     </div>
@@ -433,6 +430,41 @@
 <script src="{{ asset('assets/js/demo/chart-area-demo.js') }}"></script>
 <script src="{{ asset('assets/js/demo/chart-pie-demo.js') }}"></script>
 
-</body>
+<script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .then(editor => {
+                console.log('CKEditor berhasil dimuat!', editor);
+            })
+            .catch(error => {
+                console.error('Ada masalah saat memuat CKEditor:', error);
+            });
+    });
+</script>
+<script>
+    function tampilkanPreview(gambar, idpreview) {
+        var gb = gambar.files;
+        for (var i = 0; i < gb.length; i++) {
+            var gbPreview = gb[i];
+            var imageType = /image.*/;
+            var preview = document.getElementById(idpreview);
+            var reader = new FileReader();
+            if (gbPreview.type.match(imageType)) {
+                preview.file = gbPreview;
+                reader.onload = (function (element) {
+                    return function (e) {
+                        element.src = e.target.result;
+                    };
+                })(preview);
+                reader.readAsDataURL(gbPreview);
+            } else {
+                alert("Type file tidak sesuai. Khusus image.");
+            }
+        }
+    }
+</script>
+</body>
 </html>
