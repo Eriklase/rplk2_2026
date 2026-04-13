@@ -18,7 +18,9 @@ Route::middleware('auth:user')->group(function () {
     // Grup untuk halaman Admin
     Route::prefix('admin')->group(function () {
         Route::get('', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard.index');
-        Route::get('/profile', [App\Http\Controllers\DashboardController::class, 'profile'])->name('profile.index');
+        Route::get('/profile', [App\Http\Controllers\DashboardController::class, 'profile'])->name('dashboard.profile');
+        Route::get('/reset-password', [App\Http\Controllers\DashboardController::class, 'resetPassword'])->name('dashboard.resetPassword');
+        Route::post('/reset-password', [App\Http\Controllers\DashboardController::class, 'prosesResetPassword'])->name('dashboard.prosesResetPassword');
 
         /*
         |--------------------------------------------------------------------------
@@ -31,6 +33,7 @@ Route::middleware('auth:user')->group(function () {
         Route::get('/kategori/ubah/{id}',[App\Http\Controllers\KategoriController::class, 'ubah'])->name('kategori.ubah');
         Route::post('/kategori/prosesUbah',[App\Http\Controllers\KategoriController::class, 'prosesUbah'])->name('kategori.prosesUbah');
         Route::get('/kategori/hapus/{id}',[App\Http\Controllers\KategoriController::class, 'hapus'])->name('kategori.hapus');
+        Route::get('/kategori/export-pdf',[App\Http\Controllers\KategoriController::class, 'exportPdf'])->name('kategori.exportPdf');
 
         /*
         |--------------------------------------------------------------------------

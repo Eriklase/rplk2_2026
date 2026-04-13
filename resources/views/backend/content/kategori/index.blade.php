@@ -11,6 +11,9 @@
                 <a href="{{route('kategori.tambah')}}" class="btn btn-primary">
                     <i class="fa fa-plus">Tambah</i>
                 </a>
+                <a href="{{route('kategori.exportPdf')}}" class="btn btn-primary">
+                    <i class="fa fa-file-export">Export</i>
+                </a>
             </div>
         </div>
 

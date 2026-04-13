@@ -84,6 +84,4 @@ class BeritaController extends Controller
             return redirect(route('berita.index'))->with('pesan',['danger','berita gagal dihapus']);
         }
     }
-
-
 }
