@@ -84,4 +84,9 @@ class KategoriController extends Controller
         //return $pdf->download('kategori.pdf');
         return $pdf->stream('kategori.pdf');
     }
+
+    public function exportExcel()
+    {
+        // Implementasi ekspor ke Excel menggunakan Laravel Excel
+    }
 }
