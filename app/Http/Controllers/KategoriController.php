@@ -23,9 +23,10 @@ class KategoriController extends Controller
 
     public function prosesTambah(Request $request)
     {
-        $validated = $request->validate([
+        $$request->validate([
             'nama_kategori' => 'required',
         ]);
+        
         $kategori = new kategori();
         $kategori->nama_kategori = $request->nama_kategori;
 
