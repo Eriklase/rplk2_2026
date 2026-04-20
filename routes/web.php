@@ -46,6 +46,7 @@ Route::middleware('auth:user')->group(function () {
         Route::post('/kategori/prosesUbah', [App\Http\Controllers\KategoriController::class, 'prosesUbah'])->name('kategori.prosesUbah');
         Route::get('/kategori/hapus/{id}', [App\Http\Controllers\KategoriController::class, 'hapus'])->name('kategori.hapus');
         Route::get('/kategori/export', [App\Http\Controllers\KategoriController::class, 'export'])->name('kategori.export');
+        Route::get('/kategori/export/excel', [App\Http\Controllers\KategoriController::class, 'exportExcel'])->name('kategori.export.excel');
 
         /*
         |--------------------------------------------------------------------------

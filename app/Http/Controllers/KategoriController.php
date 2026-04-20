@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\KategoriExport;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Maatwebsite\Excel\Facades\Excel;
 
 class KategoriController extends Controller
 {
@@ -87,6 +89,6 @@ class KategoriController extends Controller
 
     public function exportExcel()
     {
-        // Implementasi ekspor ke Excel menggunakan Laravel Excel
+        return Excel::download(new KategoriExport(), 'kategori.xlsx');
     }
 }
