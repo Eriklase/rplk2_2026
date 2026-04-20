@@ -3,13 +3,20 @@
     <div class="container-fluid">
         <h1 class="h3 mb-2 text-gray-800">Reset Password</h1>
 
+<<<<<<< HEAD
         @if(session()->has('pesan'))
+=======
+         @if(session()->has('pesan'))
+>>>>>>> e0210e5 (first commit)
             <div class="alert alert-{{session()->get('pesan')[0]}}">
                 {{(session()->get('pesan'))[1]}}
             </div>
         @endif
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> e0210e5 (first commit)
         <div class="card shadow mb-4">
             <div class="card-body">
                 <form action="{{route('dashboard.prosesResetPassword')}}" method="post">
@@ -18,7 +25,11 @@
                         <label class="form-label">Password Lama</label>
                         <input type="password" name="old_password" value="{{old('old_password')}}" class="form-control" @error('old_password') is-invalid @enderror>
                         @error('old_password')
+<<<<<<< HEAD
                         <span style="color: red" font-weight: 600; font-size: 9pt>{{$message}}</span>
+=======
+                        <span style="color: red" font-weight: 600; font-size: 9pt">{{$message}}</span>
+>>>>>>> e0210e5 (first commit)
                         @enderror
                     </div>
 
@@ -26,7 +37,11 @@
                         <label class="form-label">Password Baru</label>
                         <input type="password" name="new_password" value="{{old('new_password')}}" class="form-control" @error('new_password') is-invalid @enderror>
                         @error('new_password')
+<<<<<<< HEAD
                         <span style="color: red" font-weight: 600; font-size: 9pt>{{$message}}</span>
+=======
+                        <span style="color: red" font-weight: 600; font-size: 9pt">{{$message}}</span>
+>>>>>>> e0210e5 (first commit)
                         @enderror
                     </div>
 
@@ -34,7 +49,11 @@
                         <label class="form-label">Konfirmasi Password Baru</label>
                         <input type="password" name="c_new_password" value="{{old('c_new_password')}}" class="form-control" @error('c_new_password') is-invalid @enderror>
                         @error('c_new_password')
+<<<<<<< HEAD
                         <span style="color: red" font-weight: 600; font-size: 9pt>{{$message}}</span>
+=======
+                        <span style="color: red" font-weight: 600; font-size: 9pt">{{$message}}</span>
+>>>>>>> e0210e5 (first commit)
                         @enderror
                     </div>
 

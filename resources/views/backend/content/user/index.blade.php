@@ -4,18 +4,12 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-6">
-                <h1 class="h3 mb-2 text-gray-800">List Kategori</h1>
+                <h1 class="h3 mb-2 text-gray-800">List User</h1>
             </div>
 
             <div class="col-lg-6 text-right">
-                <a href="{{route('kategori.export')}}" class="btn btn-success">
-                    <i class="fa fa-file-pdf">Export</i>
-                </a>
-                <a href="{{route('kategori.tambah')}}" class="btn btn-primary">
+                <a href="{{route('user.tambah')}}" class="btn btn-primary">
                     <i class="fa fa-plus">Tambah</i>
-                </a>
-                <a href="{{route('kategori.exportPdf')}}" class="btn btn-primary">
-                    <i class="fa fa-file-export">Export</i>
                 </a>
             </div>
         </div>
@@ -34,7 +28,8 @@
                         <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nama Kategori</th>
+                            <th>Nama user</th>
+                            <th>Email user</th>
                             <th>Aksi</th>
                         </tr>
                         </thead>
@@ -42,13 +37,14 @@
                         @php
                         $no = 1;
                         @endphp
-                        @foreach($kategori as $row)
+                        @foreach($user as $row)
                             <tr>
                                 <td>{{$no++}}</td>
-                                <td>{{$row->nama_kategori}}</td>
+                                <td>{{$row->name}}</td>
+                                <td>{{$row->email}}</td>
                                 <td>
-                                    <a href="{{route('kategori.ubah', $row->id_kategori)}}" class="btn btn-sm btn-secondary"><i class="fa fa-edit">Edit</i></a>
-                                    <a href="{{route('kategori.hapus', $row->id_kategori)}}" onclick="return confirm('Apakah anda yang ingin menghapus ini....?')" class="btn btn-sm btn-secondary"><i class="fa fa-trash">Hapus</i></a>
+                                    <a href="{{route('user.ubah', $row->id)}}" class="btn btn-sm btn-secondary"><i class="fa fa-edit">Edit</i></a>
+                                    <a href="{{route('user.hapus', $row->id)}}" onclick="return confirm('Apakah anda yang ingin menghapus ini....?')" class="btn btn-sm btn-secondary"><i class="fa fa-trash">Hapus</i></a>
                                 </td>
                             </tr>
                         @endforeach

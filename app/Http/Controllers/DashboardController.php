@@ -5,16 +5,32 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\Models\User;
+<<<<<<< HEAD
 use Hash;
+=======
+use App\Models\Kategori;
+use App\Models\Berita;
+use Hash;
+
+>>>>>>> e0210e5 (first commit)
 class DashboardController extends Controller
 {
     public function index(){
-        return view('backend.content.dashboard');
+        $totalBerita = Berita::count();
+        $totalKategori = Kategori::count();
+        $totalUser = User::count();
+
+        $latestBerita = Berita::with('kategori')->latest()->get()->take(5);
+        $no = 1;
+        return view('backend.content.dashboard', compact('totalBerita', 'totalKategori', 'totalUser', 'latestBerita', 'no'));
     }
 
     public function profile(){
-        return view('backend.content.profile');
+        $id = Auth::guard('user')->user()->id;
+        $user = User::find($id);
+        return view('backend.content.profile', compact('user'));
     }
+<<<<<<< HEAD
     public function resetPassword(){
         return view('backend.content.resetPassword');
     }
@@ -25,10 +41,25 @@ class DashboardController extends Controller
             'new_password' => 'required|min:6',
             'c_new_password' => 'required_with:new_password|same:new_password|min:6'
         ]);
+=======
+
+    public function resetPassword(){
+        return view('backend.content.resetpassword');
+    }
+
+    public function prosesResetPassword(Request $request){
+        $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required|min:6',
+            'c_new_password' => 'required_with:new_password|same:new_password|min:6',
+        ]);
+        
+>>>>>>> e0210e5 (first commit)
         $old_password = $request->old_password;
         $new_password = $request->new_password;
 
         $id = Auth::guard('user')->user()->id;
+<<<<<<< HEAD
         $user = User::findOrFail($id);
 
         if (Hash::check($old_password, $user->password)) {
@@ -44,3 +75,23 @@ class DashboardController extends Controller
         }
     }
 }
+=======
+        $user = User::find($id);
+
+        if(Hash::check($old_password, $user->password)){
+            $user->password = bcrypt($new_password);
+            $user->save();
+
+            try{
+                $user->save();
+                return redirect()->route('dashboard.resetPassword')->with('pesan', ['success', 'Password berhasil diubah']);
+            }catch (\Exception $e){
+                return redirect()->route('dashboard.resetPassword')->with('pesan', ['danger', 'Password gagal diubah']);
+            }
+         
+        }else{
+            return redirect()->route('dashboard.resetPassword')->with('pesan', ['danger', 'Password lama salah']);
+        }
+    }
+}
+>>>>>>> e0210e5 (first commit)

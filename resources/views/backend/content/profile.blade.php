@@ -1,8 +1,23 @@
 @extends('backend.layout.main')
 @section('content')
 
-    <h1> PROFILE </h1>
+   <div class="container-fluid">
+        <h1 class="h3 mb-2 text-gray-800">Profile User</h1>
+        <div class="card shadow mb-4">
+            <div class="card-body">
+                <div class="mb-3">
+                    <label class="form-label">Nama</label>
+                    <input value="{{$user->name}}" class="form-control" readonly>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input value="{{$user->email}}" class="form-control" readonly>
+                </div>
 
-    isi content
+                <a href="{{route('dashboard.index')}}" class="btn btn-primary">Kembali</a>
+            </div>
+        </div>
+    </div>
 
 @endsection

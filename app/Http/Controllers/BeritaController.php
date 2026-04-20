@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Berita;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BeritaController extends Controller
 {
@@ -84,4 +85,28 @@ class BeritaController extends Controller
             return redirect(route('berita.index'))->with('pesan',['danger','berita gagal dihapus']);
         }
     }
+<<<<<<< HEAD
+=======
+
+    public function simpan(Request $request)
+{
+    $request->validate([
+        'judul_berita' => 'required',
+        'gambar_berita' => 'required|image|mimes:jpg,jpeg,png|max:2048'
+    ]);
+
+    // upload gambar
+    $gambar = $request->file('gambar_berita')->store('berita', 'public');
+
+    // simpan ke database
+    \App\Models\Berita::create([
+        'judul_berita' => $request->judul_berita,
+        'gambar_berita' => $gambar
+    ]);
+
+    return redirect()->route('berita')->with('pesan', ['success', 'Data berhasil disimpan']);
+}
+
+
+>>>>>>> e0210e5 (first commit)
 }
