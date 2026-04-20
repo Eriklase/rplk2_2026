@@ -61,11 +61,11 @@
                                     <td>{{ $row->status_menu == 1 ? 'Aktif' : 'Tidak Aktif' }}</td>
                                     <td>
                                         <a href="{{ route('menu.ubah', $row->id_menu) }}"
-                                            class="btn btn-sm btn-dark salmon"><i class="fa fa-edit">Edit</i>
+                                            class="btn btn-sm btn-warning salmon"><i class="fa fa-edit"></i>
                                         </a>
                                         <a href="{{ route('menu.hapus', $row->id_menu) }}"
                                             class="btn btn-sm btn-danger" onclick="return confirm('Anda yakin?')">
-                                            <i class="fa fa-trash">Hapus</i>
+                                            <i class="fa fa-trash"></i>
                                         </a>
 
                                         @if ($loop->first)

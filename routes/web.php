@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Response;
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
 Route::get('/berita/{id}', [App\Http\Controllers\HomeController::class, 'detailBerita'])->name('home.detailBerita');
 Route::get('/page/{id}', [App\Http\Controllers\HomeController::class, 'detailPage'])->name('home.detailPage');
-Route::get('/semua_berita', [App\Http\Controllers\HomeController::class,'semuaBerita'])->name('home.semuaBerita');
+Route::get('/semua_berita', [App\Http\Controllers\HomeController::class, 'semuaBerita'])->name('home.semuaBerita');
 
 Route::middleware('guest:user')->group(function () {
     Route::get('/login', [AuthController::class, 'index'])->name('auth.index');
@@ -27,11 +27,9 @@ Route::middleware('auth:user')->group(function () {
     // Grup untuk halaman Admin
     Route::prefix('admin')->group(function () {
         Route::get('', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard.index');
-<<<<<<< HEAD
         Route::get('/profile', [App\Http\Controllers\DashboardController::class, 'profile'])->name('dashboard.profile');
-=======
         Route::get('/profile', [App\Http\Controllers\DashboardController::class, 'profile'])->name('profile.index');
->>>>>>> e0210e5 (first commit)
+
         Route::get('/reset-password', [App\Http\Controllers\DashboardController::class, 'resetPassword'])->name('dashboard.resetPassword');
         Route::post('/reset-password', [App\Http\Controllers\DashboardController::class, 'prosesResetPassword'])->name('dashboard.prosesResetPassword');
 
@@ -40,15 +38,7 @@ Route::middleware('auth:user')->group(function () {
         | KATEGORI
         |--------------------------------------------------------------------------
         */
-<<<<<<< HEAD
-        Route::get('/kategori',[App\Http\Controllers\KategoriController::class, 'index'])->name('kategori.index');
-        Route::get('/kategori/tambah',[App\Http\Controllers\KategoriController::class, 'tambah'])->name('kategori.tambah');
-        Route::post('/kategori/prosesTambah',[App\Http\Controllers\KategoriController::class, 'prosesTambah'])->name('kategori.prosesTambah');
-        Route::get('/kategori/ubah/{id}',[App\Http\Controllers\KategoriController::class, 'ubah'])->name('kategori.ubah');
-        Route::post('/kategori/prosesUbah',[App\Http\Controllers\KategoriController::class, 'prosesUbah'])->name('kategori.prosesUbah');
-        Route::get('/kategori/hapus/{id}',[App\Http\Controllers\KategoriController::class, 'hapus'])->name('kategori.hapus');
-        Route::get('/kategori/export-pdf',[App\Http\Controllers\KategoriController::class, 'exportPdf'])->name('kategori.exportPdf');
-=======
+
         Route::get('/kategori', [App\Http\Controllers\KategoriController::class, 'index'])->name('kategori.index');
         Route::get('/kategori/tambah', [App\Http\Controllers\KategoriController::class, 'tambah'])->name('kategori.tambah');
         Route::post('/kategori/prosesTambah', [App\Http\Controllers\KategoriController::class, 'prosesTambah'])->name('kategori.prosesTambah');
@@ -56,7 +46,6 @@ Route::middleware('auth:user')->group(function () {
         Route::post('/kategori/prosesUbah', [App\Http\Controllers\KategoriController::class, 'prosesUbah'])->name('kategori.prosesUbah');
         Route::get('/kategori/hapus/{id}', [App\Http\Controllers\KategoriController::class, 'hapus'])->name('kategori.hapus');
         Route::get('/kategori/export', [App\Http\Controllers\KategoriController::class, 'export'])->name('kategori.export');
->>>>>>> e0210e5 (first commit)
 
         /*
         |--------------------------------------------------------------------------
